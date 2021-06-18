@@ -1,0 +1,2 @@
+rootProject.name = "AudioCompression"
+include ':app'
