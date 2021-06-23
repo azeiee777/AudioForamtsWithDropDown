@@ -40,15 +40,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
         switch (position) {
             case 0:
-                setResource(R.raw.beep);
+                //setResource(R.raw.beep);
                 Toast.makeText(this, "aac", Toast.LENGTH_SHORT).show();
                 break;
             case 1:
-                setResource(R.raw.description_selection_none_impairment_hindi);
+                //setResource(R.raw.description_selection_none_impairment_hindi);
                 Toast.makeText(this, "amr", Toast.LENGTH_SHORT).show();
                 break;
             case 2:
-                setResource(R.raw.welcome_aac);
+                //setResource(R.raw.welcome_aac);
                 Toast.makeText(this, "flac", Toast.LENGTH_SHORT).show();
                 break;
             default:
@@ -75,12 +75,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void handleButton() {
-        if (mediaPlayer.isPlaying() && mediaPlayer != null) {
-            mediaPlayer.pause();
-            buttonPlay.setText("Play");
-        } else {
+        if (!mediaPlayer.isPlaying() && mediaPlayer != null) {
             mediaPlayer.start();
             buttonPlay.setText("Pause");
+        } else {
+            mediaPlayer.pause();
+            buttonPlay.setText("Play");
         }
 
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private void setResource(int sound) {
         if (mediaPlayer != null) {
-            //mediaPlayer.release();
+            //mediaPlayer.reset();
             mediaPlayer.create(this, sound);
         } else {
             mediaPlayer.create(this, sound);
