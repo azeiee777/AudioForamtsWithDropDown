@@ -1,12 +1,9 @@
 package com.azeiee.audiocompression;
 
-import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,13 +12,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class AudioHandleActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private MediaPlayer mediaPlayer;
     private Button buttonPlay;
     private Spinner dropdown;
-    TextView tvReview;
-    int sound;
+    private TextView tvReview;
+    private int sound;
     private static final String[] items = new String[]{".aac", ".amr", ".flac", ".midi", ".mp3", ".ogg", ".opus", ".wav"};
     public static final String TAG = "MainActivity";
 
@@ -142,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             public void onCompletion(MediaPlayer mp) {
                 // TODO Auto-generated method stub
                 buttonPlay.setText("Play");
-                Toast.makeText(MainActivity.this, "Audio completed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AudioHandleActivity.this, "Audio completed", Toast.LENGTH_SHORT).show();
             }
         });
     }
