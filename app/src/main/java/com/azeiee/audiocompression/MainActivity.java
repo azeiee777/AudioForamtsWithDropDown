@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private Spinner dropdown;
     TextView tvReview;
     int sound;
-    private static final String[] items = new String[]{"aac", "amr", "flac", "midi", "mp3", "oog", "opus", "wave"};
+    private static final String[] items = new String[]{".aac", ".amr", ".flac", ".midi", ".mp3", ".ogg", ".opus", ".wav"};
     public static final String TAG = "MainActivity";
 
     @Override
@@ -45,49 +45,49 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             case 0:
                 sound = R.raw.welcome_aac;
                 releaseMediaPlayer();
-                updateReview(R.color.average_size,"4mb","Not Supporting our requirement perfectly");
+                updateReview(R.color.high_size,"39.35mb","Not Supporting our requirement at all");
                 setResource(sound);
                 break;
             case 1:
                 sound = R.raw.welcome_amr;
                 releaseMediaPlayer();
-                updateReview(R.color.low_size,"4mb","Supporting our requirement perfectly ");
+                updateReview(R.color.low_size,"13mb","Supporting our requirement perfectly ");
                 setResource(sound);
                 break;
             case 2:
                 sound = R.raw.welcome_flac;
                 releaseMediaPlayer();
-                updateReview(R.color.average_size,"4mb","Not Supporting our requirement perfectly");
+                updateReview(R.color.high_size,"127.8mb","Not Supporting our requirement at all");
                 setResource(sound);
                 break;
             case 3:
                 sound = R.raw.welcome_mid;
                 releaseMediaPlayer();
-                updateReview(R.color.high_size,"4mb","sound quality is very bad , Not able to recognise");
+                updateReview(R.color.high_size,"10.7mb","sound quality is very bad , Not able to recognise");
                 setResource(sound);
                 break;
             case 4:
                 sound = R.raw.welcome_mp3;
                 releaseMediaPlayer();
-                updateReview(R.color.average_size,"4mb","Not Supporting our requirement perfectly");
+                updateReview(R.color.high_size,"40.65mb","Not Supporting our requirement at all");
                 setResource(sound);
                 break;
             case 5:
                 sound = R.raw.welcome_ogg;
                 releaseMediaPlayer();
-                updateReview(R.color.average_size,"4mb","Not Supporting our requirement perfectly");
+                updateReview(R.color.average_size,"25.7mb","Not Supporting our requirement perfectly");
                 setResource(sound);
                 break;
             case 6:
                 sound = R.raw.welcome_opus;
                 releaseMediaPlayer();
-                updateReview(R.color.average_size,"4mb","Not Supporting our requirement perfectly");
+                updateReview(R.color.high_size,"32.85mb","Not Supporting our requirement at all");
                 setResource(sound);
                 break;
             case 7:
                 sound = R.raw.welcome_wav;
                 releaseMediaPlayer();
-                updateReview(R.color.high_size,"4mb","Not Supporting our requirement at all");
+                updateReview(R.color.high_size,"334mb","Not Supporting our requirement at all");
                 setResource(sound);
                 break;
             default:
