@@ -1,44 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".AudioHandleActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="250dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:padding="3dp"
+            android:text="Select Audio Format"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Play"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Play" />
 
-    <Spinner
-        android:id="@+id/spinner"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="124dp"
-        android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnPlay"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="50dp"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Audio Format"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/spinner"
-        app:layout_constraintEnd_toStartOf="@+id/spinner"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/spinner"
-        app:layout_constraintVertical_bias="1.0" />
+       <!-- <TextView
+            android:id="@+id/tv_review"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="5dp"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="Review : "
+            android:textSize="24sp" />-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_review_box"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text=""
+            android:padding="5dp"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+</RelativeLayout>
