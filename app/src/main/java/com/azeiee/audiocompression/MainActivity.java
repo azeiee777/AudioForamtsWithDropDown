@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private MediaPlayer mediaPlayer;
     private Button buttonPlay;
     private Spinner dropdown;
+    int sound;
     private static final String[] items = new String[]{"aac", "amr", "flac", "midi", "mp3", "oog", "opus", "wave"};
     public static final String TAG = "MainActivity";
 
@@ -26,29 +27,32 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
         initViews();
         setDropdown();
-        mediaPlayer = MediaPlayer.create(this,R.raw.welcome_mp3);
+       // mediaPlayer = MediaPlayer.create(this, R.raw.welcome_mp3);
         buttonPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "Button Clicked", Toast.LENGTH_SHORT).show();
-                handleButton();
+                handleButton(sound);
             }
         });
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+
         switch (position) {
             case 0:
                 //setResource(R.raw.beep);
+                sound = R.raw.beep;
                 Toast.makeText(this, "aac", Toast.LENGTH_SHORT).show();
                 break;
             case 1:
-                //setResource(R.raw.description_selection_none_impairment_hindi);
+               // setResource(R.raw.description_selection_none_impairment_hindi);
+                sound = R.raw.welcome_aac;
                 Toast.makeText(this, "amr", Toast.LENGTH_SHORT).show();
                 break;
             case 2:
-                //setResource(R.raw.welcome_aac);
+                sound = R.raw.welcome_aac;
                 Toast.makeText(this, "flac", Toast.LENGTH_SHORT).show();
                 break;
             default:
@@ -74,15 +78,42 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         dropdown.setOnItemSelectedListener(this);
     }
 
-    private void handleButton() {
-        if (!mediaPlayer.isPlaying() && mediaPlayer != null) {
+    private void handleButton(int sound) {
+      /*  if (mediaPlayer != null) {
+            if (!mediaPlayer.isPlaying()) {
+                mediaPlayer.start();
+                buttonPlay.setText("Pause");
+            } else {
+                mediaPlayer.pause();
+                buttonPlay.setText("Play");
+            }
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    // TODO Auto-generated method stub
+                    buttonPlay.setText("Play");
+                    Toast.makeText(MainActivity.this, "Audio completed", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }else{
+            setResource(sound);
+            handleButton(sound);
+        }*/
+        setResource(sound);
+        playSound(sound);
+    }
+
+    private void playSound(int sound) {
+        if(mediaPlayer == null ){
+            setResource(sound);
+        }
+        if (!mediaPlayer.isPlaying()) {
             mediaPlayer.start();
             buttonPlay.setText("Pause");
         } else {
             mediaPlayer.pause();
             buttonPlay.setText("Play");
         }
-
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
@@ -95,12 +126,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private void setResource(int sound) {
         if (mediaPlayer != null) {
-            //mediaPlayer.reset();
-            mediaPlayer.create(this, sound);
-        } else {
-            mediaPlayer.create(this, sound);
+           releaseMediaPlayer();
         }
+        mediaPlayer= MediaPlayer.create(this, sound);
+    }
 
+    private void releaseMediaPlayer(){
+        if(mediaPlayer != null){
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 
 }
